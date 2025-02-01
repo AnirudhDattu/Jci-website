@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@layer utilities {
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    /* Show scrollbar */
+    .scrollbar::-webkit-scrollbar {
+        display: block;
+    }
+
+    .scrollbar {
+        -ms-overflow-style: auto;
+        /* IE and Edge */
+        scrollbar-width: auto;
+        /* Firefox */
+    }
+}
+
+@layer components {
+
+    /* Custom shine effect for the button */
+    .shine-effect {
+        @apply relative overflow-hidden;
+    }
+
+    .shine-effect::after {
+        content: "";
+        @apply absolute top-0 left-[-75%] w-1/2 h-full;
+        background: linear-gradient(120deg,
+                transparent,
+                rgba(255, 255, 255, 0.4),
+                transparent);
+        transform: skewX(-25deg);
+    }
+
+    .shine-effect:hover::after {
+        animation: shine 1s forwards;
+    }
+
+    @keyframes shine {
+        100% {
+            left: 125%;
+        }
+    }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
