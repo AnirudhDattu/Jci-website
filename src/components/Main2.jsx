@@ -2,7 +2,10 @@ import React from "react";
 
 const Main2 = () => {
   return (
-    <div className="flex justify-center items-center pb-5 bg-[#F8F5F0] px-4 md:px-6 lg:px-8">
+    <div
+      id="about"
+      className="flex justify-center items-center pb-5 bg-[#F8F5F0] px-4 md:px-6 lg:px-8"
+    >
       <div className="max-w-5xl text-center">
         {/* Heading */}
         <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-black font-[play] mb-10">

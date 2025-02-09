@@ -1,0 +1,49 @@
+[
+    {
+        "name": "event-1",
+        "images": [
+            "/gallery/event-1/001.JPG",
+            "/gallery/event-1/002.JPG",
+            "/gallery/event-1/003.JPG",
+            "/gallery/event-1/004.JPG",
+            "/gallery/event-1/005.JPG",
+            "/gallery/event-1/006.JPG",
+            "/gallery/event-1/007.JPG",
+            "/gallery/event-1/008.JPG"
+        ]
+    },
+    {
+        "name": "event-2",
+        "images": [
+            "/gallery/event-2/001.JPG",
+            "/gallery/event-2/002.JPG",
+            "/gallery/event-2/003.JPG",
+            "/gallery/event-2/004.JPG",
+            "/gallery/event-2/005.JPG",
+            "/gallery/event-2/006.JPG",
+            "/gallery/event-2/007.JPG",
+            "/gallery/event-2/008.JPG"
+        ]
+    },
+    {
+        "name": "natcon",
+        "images": [
+            "/gallery/natcon/001.JPG",
+            "/gallery/natcon/002.JPG",
+            "/gallery/natcon/003.JPG",
+            "/gallery/natcon/004.JPG",
+            "/gallery/natcon/005.JPG",
+            "/gallery/natcon/006.JPG",
+            "/gallery/natcon/007.JPG",
+            "/gallery/natcon/008.JPG",
+            "/gallery/natcon/009.JPG",
+            "/gallery/natcon/010.JPG",
+            "/gallery/natcon/011.JPG",
+            "/gallery/natcon/012.JPG",
+            "/gallery/natcon/013.JPG",
+            "/gallery/natcon/014.JPG",
+            "/gallery/natcon/015.JPG",
+            "/gallery/natcon/016.JPG"
+        ]
+    }
+]

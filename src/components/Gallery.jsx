@@ -1,50 +1,127 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
-const images = [
-  "/gallery/001.JPG",
-  "/gallery/002.JPG",
-  "/gallery/003.JPG",
-  "/gallery/004.JPG",
-  "/gallery/005.JPG",
-  "/gallery/006.JPG",
-  "/gallery/007.JPG",
-  "/gallery/008.JPG",
-];
+const categories = ["All categories", "Event - 1", "Event - 2", "Event - 3"];
+
+const folderMapping = {
+  "Event - 1": "event-1",
+  "Event - 2": "event-2",
+  "Event - 3": "natcon",
+};
 
 export default function Gallery() {
-  const [loadedImages, setLoadedImages] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState("All categories");
+  const [images, setImages] = useState([]);
 
-  const handleImageLoad = (index) => {
-    setLoadedImages((prev) => ({ ...prev, [index]: true }));
-  };
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        // Load images from a JSON file or API
+        const response = await fetch("/gallery/images.json");
+        const data = await response.json();
+
+        if (selectedCategory === "All categories") {
+          setImages(data.flatMap((event) => event.images));
+        } else {
+          const categoryImages =
+            data.find((event) => event.name === folderMapping[selectedCategory])
+              ?.images || [];
+          setImages(categoryImages);
+        }
+      } catch (error) {
+        console.error("Error fetching images:", error);
+      }
+    };
+
+    fetchImages();
+  }, [selectedCategory]);
 
   return (
-    <div className="p-6">
-      <h2 className="text-3xl font-bold text-center mb-6">Gallery</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {images.map((src, index) => (
-          <div
-            key={index}
-            className="relative w-full h-48 md:h-64 bg-gray-200 rounded-lg overflow-hidden"
-          >
-            {/* Skeleton Loader */}
-            {!loadedImages[index] && (
-              <div className="absolute inset-0 animate-pulse bg-gray-300"></div>
-            )}
+    <div className="bg-[#F8F5F0] pt-20">
+      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* Title Section */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Gallery</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Explore moments from our events and activities
+          </p>
+        </div>
 
-            {/* Image */}
-            <img
-              src={src}
-              alt={`Gallery ${index + 1}`}
-              className={`w-full h-full object-cover transition-opacity duration-500 ${
-                loadedImages[index] ? "opacity-100" : "opacity-0"
-              }`}
-              loading="lazy"
-              onLoad={() => handleImageLoad(index)}
-            />
+        {/* Category Filters */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((category) => (
+            <button
+              key={category}
+              className={`px-4 py-2 rounded-full text-sm md:text-base md:px-6 md:py-2.5 transition-all duration-300 ${
+                selectedCategory === category
+                  ? "bg-purple-600 text-white shadow-lg"
+                  : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+              } font-medium hover:shadow-md`}
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+        {/* Mobile Carousel */}
+        <div className="md:hidden mb-8">
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            spaceBetween={16}
+            slidesPerView={1.2}
+            centeredSlides
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 3000 }}
+          >
+            {images.map((src, index) => (
+              <SwiperSlide key={index}>
+                <div className="relative overflow-hidden rounded-xl shadow-lg h-64">
+                  <img
+                    className="w-full h-full object-cover"
+                    src={src}
+                    alt={`Gallery ${index + 1}`}
+                    loading="lazy"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {images.map((src, index) => (
+            <div
+              key={index}
+              className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                src={src}
+                alt={`Gallery ${index + 1}`}
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                  <p className="font-medium">Event Photo</p>
+                  <p className="text-sm opacity-90">#{index + 1}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Empty State */}
+        {images.length === 0 && (
+          <div className="text-center py-12 text-gray-500">
+            No photos found in this category
           </div>
-        ))}
-      </div>
+        )}
+      </section>
     </div>
   );
 }

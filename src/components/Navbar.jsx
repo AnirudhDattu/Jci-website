@@ -15,6 +15,16 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -58,7 +68,11 @@ const Navbar = () => {
           <Link to="/" className="hover:text-[#EFBF2C]">
             Home
           </Link>
-          <Link to="/about" className="hover:text-[#EFBF2C]">
+          <Link
+            to="/"
+            onClick={() => scrollToSection("about")}
+            className="hover:text-[#EFBF2C]"
+          >
             About Us
           </Link>
           <Link to="/gallery" className="hover:text-[#EFBF2C]">
@@ -192,7 +206,8 @@ const Navbar = () => {
           </Link>
           <Link
             onClick={toggleMenu}
-            to="/about"
+            to="/"
+            onClick={() => scrollToSection("about")}
             className="block hover:text-[#EFBF2C]"
           >
             About Us
