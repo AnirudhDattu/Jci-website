@@ -87,12 +87,14 @@ const Navbar = () => {
           >
             Become a Member
           </Link> */}
-          <Link
-            to="/membership"
+          <a
+            href="https://jac.jciindia.in/join-us/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="shine-effect bg-yellow-500 rounded-tl-3xl rounded-br-3xl text-black px-4 py-2 hover:bg-yellow-600"
           >
             Become a Member
-          </Link>
+          </a>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -207,7 +209,7 @@ const Navbar = () => {
           <Link
             onClick={toggleMenu}
             to="/"
-            onClick={() => scrollToSection("about")}
+            // onClick={() => scrollToSection("about")}
             className="block hover:text-[#EFBF2C]"
           >
             About Us
@@ -226,13 +228,16 @@ const Navbar = () => {
           >
             Team
           </Link>
-          <Link
+
+          <a
             onClick={toggleMenu}
-            to="/membership"
+            href="https://jac.jciindia.in/join-us/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="shine-effect bg-yellow-500 rounded-tl-3xl rounded-br-3xl text-black px-4 py-2 hover:bg-yellow-600"
           >
             Become a Member
-          </Link>
+          </a>
         </div>
       </div>
     </div>
