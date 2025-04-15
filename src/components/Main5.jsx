@@ -6,7 +6,7 @@ import {
 } from "react-scroll-parallax";
 import bannerImg from "../assets/parallex.png"; // Ensure this path is correct
 // import SplashCursor from "../../Reactbits/SplashCursor/SplashCursor";
-import SplashCursorWrapper from "./SplashCursorWrapper";
+// import SplashCursorWrapper from "./SplashCursorWrapper";
 
 const ParallaxBannerComponent = () => {
   return (
@@ -25,7 +25,7 @@ const ParallaxBannerComponent = () => {
 
             {/* Content Layer */}
             <ParallaxBannerLayer speed={10}>
-              <SplashCursorWrapper />
+              {/* <SplashCursorWrapper /> */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
                 <h1 className="text-3xl font-extrabold md:text-5xl drop-shadow-xl">
                   Become a Member of the Alumni Club!
