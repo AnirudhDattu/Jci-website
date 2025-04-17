@@ -5,37 +5,37 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 // Replace with your images
-import event1 from "../assets/img2.png";
-import event2 from "../assets/img2.png";
-import event3 from "../assets/img2.png";
+import event1 from "../assets/eventapr.jpg";
+import event2 from "../assets/event20.jpg";
+import event3 from "../assets/event23.jpg";
 
 const Main6 = () => {
   const events = [
     {
       image: event1,
-      month: "SEP",
-      date: "15",
-      title: "Leadership Summit",
-      location: "Convention Center",
-      time: "9:00 AM",
-      status: "Upcoming",
-    },
-    {
-      image: event2,
-      month: "OCT",
-      date: "22",
-      title: "Networking Night",
-      location: "City Hall",
-      time: "6:30 PM",
+      month: "April",
+      date: "2",
+      title: "2nd Board Meeting",
+      location: "Hotel Taj",
+      time: "9:00 PM",
       status: "Completed",
     },
     {
+      image: event2,
+      month: "April",
+      date: "20",
+      title: "NVC Official Visit",
+      location: "Secundrabad",
+      time: "10:30 AM",
+      status: "Today",
+    },
+    {
       image: event3,
-      month: "NOV",
-      date: "05",
-      title: "Workshop Series",
-      location: "Innovation Hub",
-      time: "2:00 PM",
+      month: "MAY",
+      date: "30",
+      title: "Busuness Conclave",
+      location: "grater Nodia",
+      time: "10:00 AM",
       status: "Upcoming",
     },
   ];
