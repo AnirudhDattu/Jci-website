@@ -4,7 +4,7 @@ const Main2 = () => {
   return (
     <div
       id="about"
-      className="flex justify-center items-center pb-5 bg-[#F8F5F0] px-4 md:px-6 lg:px-8"
+      className="flex justify-center items-center pb-5 bg-[#F8F5F0] px-4 md:px-6 lg:px-8 pt-10"
     >
       <div className="max-w-5xl text-center">
         {/* Heading */}
