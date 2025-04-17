@@ -198,34 +198,25 @@ const Navbar = () => {
           </svg>
         </button>
         <div className="font-coda space-y-6 flex flex-col items-center tracking-widest">
-          <Link
-            onClick={toggleMenu}
-            to="/"
-            className="block hover:text-[#EFBF2C]"
-          >
+          <Link to="/" className="hover:text-[#EFBF2C]">
             Home
           </Link>
           <Link
-            onClick={toggleMenu}
             to="/"
-            // onClick={() => scrollToSection("about")}
-            className="block hover:text-[#EFBF2C]"
+            onClick={() => scrollToSection("about")}
+            className="hover:text-[#EFBF2C]"
           >
             About Us
           </Link>
-          <Link
-            onClick={toggleMenu}
-            to="/gallery"
-            className="block hover:text-[#EFBF2C]"
-          >
-            Gallery
-          </Link>
-          <Link
-            onClick={toggleMenu}
-            to="/team"
-            className="block hover:text-[#EFBF2C]"
-          >
+
+          <Link to="/team" className="hover:text-[#EFBF2C]">
             Team
+          </Link>
+          <Link to="/events" className="hover:text-[#EFBF2C]">
+            Events
+          </Link>
+          <Link to="/gallery" className="hover:text-[#EFBF2C]">
+            Gallery
           </Link>
 
           <a
