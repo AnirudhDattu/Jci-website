@@ -6,17 +6,17 @@ const TeamMember = ({ name, role, isLead, image }) => (
     className={`relative group min-w-[150px] sm:min-w-[240px] mx-2 ${
       isLead ? "order-first" : ""
     }`}
-    whileHover={{ scale: 0.2 }}
-    transition={{ duration: 1.5 }}
+    whileHover={{ scale: 1 }}
+    transition={{ duration: 2 }}
   >
     <div className="overflow-hidden rounded-lg">
       <img
         src={`/Team/${image}`}
         alt={name}
         className="w-full h-[172px] sm:h-[250px] md:h-[300px] bg-gray-200 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
-        // onError={(e) => {
-        //   e.target.src = "/team/default-avatar.jpg";
-        // }}
+        onError={(e) => {
+          e.target.src = "/team/default-avatar.jpg";
+        }}
       />
       <div className="p-3 sm:p-4 ps-0">
         <h3 className="text-black font-bold text-lg sm:text-lg md:text-xl">
@@ -36,7 +36,7 @@ const TeamMember = ({ name, role, isLead, image }) => (
 
 const TeamRow = ({ teamName, members, isReverse }) => {
   const sortedMembers = [...members].sort((a, b) => {
-    if (a.isLead) return -1;
+    if (a.isLead) return 1;
     if (b.isLead) return 1;
     return 0;
   });
@@ -101,61 +101,61 @@ const Team = () => {
           name: "JCI SEN PDM GVN RAJU ",
           role: "I P Z C",
           isLead: false,
-          image: "001.jpg",
+          image: "005.jpg",
         },
         {
           name: "Jc Naveen kumar  chavalla",
           role: "Zone Vice Chairman - A",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "JCI SEN PPP Srinivas  Veerabomma",
           role: "Zone Vice Chairman - B",
           isLead: false,
-          image: "001.jpg",
+          image: "014.jpg",
         },
         {
           name: "Jc Surender Reddy  Gade",
           role: "Zone Vice Chairman - C",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "JCI SEN  Vijayanand  Jilkaar",
           role: "Zone Vice Chairman -D",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "JCI SEN Mahesh  Golechha",
           role: "Zone Vice Chairman - E",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc Kamalakar  Musthyala",
           role: "Zone Parlamentarian",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc Kathuri  Srinivas",
           role: "Zone Secreatary",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "JC PDM Shyam sunder  Madugala",
           role: "Zone Treasurer",
           isLead: false,
-          image: "001.jpg",
+          image: "004.jpg",
         },
         {
           name: "Jc Vishakha  Mashankar",
           role: "Zone Foundation Officer",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
       ],
     },
@@ -166,37 +166,37 @@ const Team = () => {
           name: "Jc ZAHABIA  KANCHANVALA",
           role: "Zone P R Person & Editor",
           isLead: true,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc Radha Krishna Sathelli ",
           role: "Zone Director",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc Kartik  Gumidelli",
           role: "Zone Director",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc NITI  KADAKIA",
           role: "Zone Director",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc CHANDRA SEKHAR NALLAMOTHU  ",
           role: "Zone Director",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc DEEPKANTH SOMA",
           role: "Zone Director",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
       ],
     },
@@ -207,31 +207,31 @@ const Team = () => {
           name: "Jc VIDHI GUPTA  ",
           role: "Regional Chairman",
           isLead: true,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc BHASKAR REDDY  VENATI",
           role: "Regional Chairman",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc Sandeep  Jain",
           role: "Regional Chairman",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc Viikash Jain",
           role: "Regional Chairman",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc SUNEEL BABU  PENUMAKA  ",
           role: "Regional Chairman",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
       ],
     },
@@ -242,49 +242,49 @@ const Team = () => {
           name: "Jc Chandra Sekhar",
           role: "Zone Coordinator",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc SRIKANTH  THELUKUNTA",
           role: "Zone Coordinator",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "JC PDM CHAITANYA KUMAR  VANKAYALA",
           role: "Zone Coordinator",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc Dr Shripuja  SIDDAMSETTY",
           role: "Zone Coordinator",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc Naveen  Majety",
           role: "Zone Coordinator",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc Guggilla  Vinay",
           role: "Zone Coordinator",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc SOMESH  SOMA",
           role: "Zone Coordinator",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
         {
           name: "Jc Muchanapalli  Suman kumar",
           role: "Zone Coordinator",
           isLead: false,
-          image: "001.jpg",
+          image: "",
         },
       ],
     },
