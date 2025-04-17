@@ -59,21 +59,22 @@ const Footer = () => {
                   </button>
                 </li>
                 <li>
-                  <button
-                    onClick={() => handleNavigation("team")}
+                  <Link
+                    to="/team"
+                    onClick={scrollToTop}
                     className="text-gray-700 hover:text-gray-900 transition-colors text-left w-full"
                   >
                     Team
-                  </button>
+                  </Link>
                 </li>
                 <li>
-                  <Link
+                  {/* <Link
                     to="/gallery"
                     onClick={scrollToTop}
                     className="text-gray-700 hover:text-gray-900 transition-colors text-left w-full"
                   >
                     Gallery
-                  </Link>
+                  </Link> */}
                 </li>
               </ul>
             </nav>
@@ -85,11 +86,8 @@ const Footer = () => {
                 <li className="text-gray-700">
                   D V S P Gupta - zone president
                 </li>
-                <li className="text-gray-700">123456789</li>
-                <li className="text-gray-700">xyz@gmail.com</li>
-                <li className="text-gray-700">
-                  james street - chennai - japan - 223242
-                </li>
+                <li className="text-gray-700">+91 9347368514</li>
+                <li className="text-gray-700">zsjaczone12@gmail.com</li>
               </ul>
             </nav>
           </div>

@@ -82,9 +82,9 @@ const Navbar = () => {
           <Link to="/events" className="hover:text-[#EFBF2C]">
             Events
           </Link>
-          <Link to="/gallery" className="hover:text-[#EFBF2C]">
+          {/* <Link to="/gallery" className="hover:text-[#EFBF2C]">
             Gallery
-          </Link>
+          </Link> */}
 
           <a
             href="https://jac.jciindia.in/join-us/"
