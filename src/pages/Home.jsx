@@ -38,7 +38,6 @@ const Home = () => {
       <Main4 />
       <Main5 />
       <Main6 />
-      <Team />
       <Footer />
     </>
   );
