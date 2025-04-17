@@ -75,18 +75,17 @@ const Navbar = () => {
           >
             About Us
           </Link>
-          <Link to="/gallery" className="hover:text-[#EFBF2C]">
-            Gallery
-          </Link>
+
           <Link to="/team" className="hover:text-[#EFBF2C]">
             Team
           </Link>
-          {/* <Link
-            to="/membership"
-            className="bg-yellow-500 rounded-tl-3xl rounded-br-3xl text-black px-4 py-2  hover:bg-yellow-600"
-          >
-            Become a Member
-          </Link> */}
+          <Link to="/events" className="hover:text-[#EFBF2C]">
+            Events
+          </Link>
+          <Link to="/gallery" className="hover:text-[#EFBF2C]">
+            Gallery
+          </Link>
+
           <a
             href="https://jac.jciindia.in/join-us/"
             target="_blank"

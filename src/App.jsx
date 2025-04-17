@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Images from "./pages/Images";
 import TeamPage from "./pages/teampage";
+import Eventpage from "./pages/eventpage";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/gallery" element={<Images />} />
         <Route path="/team" element={<TeamPage />} />
-        {/* <Route path="*" element={<NotFound />} /> Handles unknown routes */}
+        <Route path="/events" element={<Eventpage />} />
       </Routes>
     </Router>
   );
