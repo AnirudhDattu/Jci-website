@@ -5,15 +5,15 @@ const Main2 = () => {
   return (
     <div
       id="about"
-      className="flex justify-center items-center pb-5 bg-[#F8F5F0] px-4 md:px-6 lg:px-4 pt-10"
+      className="flex flex-col justify-center items-center bg-[#F8F5F0] px-4 md:px-6 lg:px-4 py-10"
     >
       <div className="max-w-5xl text-center">
         {/* Heading */}
         <motion.h1
           className="text-xl md:text-2xl lg:text-3xl font-bold text-black font-[play] mb-10"
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           About JAC (JCI Alumni Club) - An Initiative from JCI India
@@ -22,10 +22,10 @@ const Main2 = () => {
         {/* Content */}
         <motion.p
           className="text-base md:text-lg text-black text-justify tracking-wide leading-7 font-[coda]"
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.8 }}
-          transition={{ delay: 0.2, duration: 1.2, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ delay: 0.2, duration: 1, ease: "easeOut" }}
         >
           The JCI Alumni Club (JAC) of JCI India is a vibrant community of
           graduates committed to creating positive change locally and beyond. As

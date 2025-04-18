@@ -59,7 +59,7 @@ const Navbar = () => {
       <div className="flex justify-between items-center p-5 bg-gradient-to-b from-black/50 to-transparent backdrop-blur-sm">
         <div className="flex items-center">
           <Link to="/" onClick={closeMenu}>
-            <img src={logo} alt="Logo" className="h-auto max-h-16 sm:max-h-12" />
+            <img src={logo} alt="Logo" className="h-auto max-h-16 md:max-h-12" />
           </Link>
         </div>
 
