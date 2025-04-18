@@ -15,6 +15,7 @@ const folderMapping = {
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState("All categories");
   const [images, setImages] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(12);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -31,6 +32,7 @@ export default function Gallery() {
               ?.images || [];
           setImages(categoryImages);
         }
+        setVisibleCount(12); // Reset visibleCount on category change
       } catch (error) {
         console.error("Error fetching images:", error);
       }
@@ -38,6 +40,10 @@ export default function Gallery() {
 
     fetchImages();
   }, [selectedCategory]);
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 12);
+  };
 
   return (
     <div className="bg-[#F8F5F0] pt-20">
@@ -77,7 +83,7 @@ export default function Gallery() {
             pagination={{ clickable: true }}
             autoplay={{ delay: 3000 }}
           >
-            {images.map((src, index) => (
+            {images.slice(0, visibleCount).map((src, index) => (
               <SwiperSlide key={index}>
                 <div className="relative overflow-hidden rounded-xl shadow-lg h-64">
                   <img
@@ -94,7 +100,7 @@ export default function Gallery() {
 
         {/* Desktop Grid */}
         <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {images.map((src, index) => (
+          {images.slice(0, visibleCount).map((src, index) => (
             <div
               key={index}
               className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
@@ -114,6 +120,18 @@ export default function Gallery() {
             </div>
           ))}
         </div>
+
+        {/* Load More Button */}
+        {visibleCount < images.length && (
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={handleLoadMore}
+              className="px-6 py-3 rounded-full bg-purple-600 text-white font-semibold shadow-md hover:bg-purple-700 transition-all duration-300"
+            >
+              Load More
+            </button>
+          </div>
+        )}
 
         {/* Empty State */}
         {images.length === 0 && (
