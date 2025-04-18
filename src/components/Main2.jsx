@@ -14,7 +14,7 @@ const Main2 = () => {
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.8 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
           About JAC (JCI Alumni Club) - An Initiative from JCI India
         </motion.h1>
