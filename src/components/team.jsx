@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const TeamMember = ({ name, role, isLead, image }) => (
-  <motion.div
-    className={`relative group min-w-[150px] sm:min-w-[240px] mx-2 ${
+  <div
+    className={`relative group min-w-[160px] sm:min-w-[240px] mx-2 ${
       isLead ? "order-first" : ""
     }`}
-    whileHover={{ scale: 1 }}
-    transition={{ duration: 2 }}
   >
     <div className="overflow-hidden rounded-lg">
       <img
@@ -19,7 +18,7 @@ const TeamMember = ({ name, role, isLead, image }) => (
         }}
       />
       <div className="p-3 sm:p-4 ps-0">
-        <h3 className="text-black font-bold text-lg sm:text-lg md:text-xl">
+        <h3 className="text-black font-bold text-base sm:text-lg md:text-xl whitespace-normal break-words">
           {name}
         </h3>
         <p
@@ -31,56 +30,93 @@ const TeamMember = ({ name, role, isLead, image }) => (
         </p>
       </div>
     </div>
-  </motion.div>
+  </div>
 );
 
 const TeamRow = ({ teamName, members, isReverse }) => {
-  const sortedMembers = [...members].sort((a, b) => {
-    if (a.isLead) return 1;
-    if (b.isLead) return 1;
-    return 0;
-  });
+  const scrollRef = useRef(null);
+  const autoScrollRef = useRef();
+  const isHoveredRef = useRef(false);
+
+  const pauseAutoScroll = () => {
+    isHoveredRef.current = true;
+    clearTimeout(autoScrollRef.current?.pauseTimeout);
+    autoScrollRef.current.pauseTimeout = setTimeout(() => {
+      isHoveredRef.current = false;
+    }, 1000); // Pause for 1 second after manual scroll
+  };
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = direction === "left" ? -300 : 300;
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      pauseAutoScroll();
+    }
+  };
+
+  // Smoother auto-scroll with infinite loop
+  React.useEffect(() => {
+    let frameId;
+    const scrollStep = 1; // Smaller step for smoother scroll
+    const scrollFunc = () => {
+      if (!isHoveredRef.current && scrollRef.current) {
+        const el = scrollRef.current;
+        if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 1) {
+          // If at end, loop back to start
+          el.scrollLeft = 0;
+        } else {
+          el.scrollLeft += scrollStep;
+        }
+      }
+      frameId = requestAnimationFrame(scrollFunc);
+    };
+    frameId = requestAnimationFrame(scrollFunc);
+    return () => cancelAnimationFrame(frameId);
+  }, []);
+
+  const handleMouseEnter = () => {
+    isHoveredRef.current = true;
+  };
+  const handleMouseLeave = () => {
+    isHoveredRef.current = false;
+  };
 
   return (
     <div className="mb-12 mt-8">
-      <h3 className="text-2xl md:text-3xl font-bold text-black mb-6 px-2">
-        {teamName}
-      </h3>
-      <div className="relative overflow-hidden">
-        <motion.div
-          className="flex"
-          animate={{
-            x: isReverse ? [0, -240] : [-240, 0],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 10,
-            ease: "linear",
-          }}
+      {teamName && (
+        <h3 className="text-2xl md:text-3xl font-bold text-black mb-6 px-2">
+          {teamName}
+        </h3>
+      )}
+      <div className="relative">
+        <button
+          onClick={() => scroll("left")}
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md"
         >
-          <div className="flex">
-            {sortedMembers.map((member, index) => (
-              <TeamMember
-                key={`${index}-original`}
-                name={member.name}
-                role={member.role}
-                isLead={member.isLead}
-                image={member.image}
-              />
-            ))}
-          </div>
-          <div className="flex">
-            {sortedMembers.map((member, index) => (
-              <TeamMember
-                key={`${index}-duplicate`}
-                name={member.name}
-                role={member.role}
-                isLead={member.isLead}
-                image={member.image}
-              />
-            ))}
-          </div>
-        </motion.div>
+          <ChevronLeft />
+        </button>
+        <div
+          ref={scrollRef}
+          className="flex overflow-x-auto space-x-2 px-8 no-scrollbar"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {members.map((member, index) => (
+            <TeamMember
+              key={index}
+              name={member.name}
+              role={member.role}
+              isLead={member.isLead}
+              image={member.image}
+            />
+          ))}
+        </div>
+        <button
+          onClick={() => scroll("right")}
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md"
+        >
+          <ChevronRight />
+        </button>
       </div>
     </div>
   );
@@ -89,7 +125,7 @@ const TeamRow = ({ teamName, members, isReverse }) => {
 const Team = () => {
   const teams = [
     {
-      name: "Core",
+      name: "",
       members: [
         {
           name: "JCI SEN PDM D V S P  GUPTA",
@@ -172,7 +208,7 @@ const Team = () => {
           name: "Jc Radha Krishna Sathelli ",
           role: "Zone Director",
           isLead: false,
-          image: "",
+          image: "020.jpg",
         },
         {
           name: "Jc Kartik  Gumidelli",
@@ -207,7 +243,7 @@ const Team = () => {
           name: "Jc VIDHI GUPTA  ",
           role: "Regional Chairman",
           isLead: true,
-          image: "",
+          image: "022.jpg",
         },
         {
           name: "Jc BHASKAR REDDY  VENATI",
@@ -242,7 +278,7 @@ const Team = () => {
           name: "Jc Chandra Sekhar",
           role: "Zone Coordinator",
           isLead: false,
-          image: "",
+          image: "023.jpg",
         },
         {
           name: "Jc SRIKANTH  THELUKUNTA",
@@ -266,7 +302,7 @@ const Team = () => {
           name: "Jc Naveen  Majety",
           role: "Zone Coordinator",
           isLead: false,
-          image: "",
+          image: "021.jpg",
         },
         {
           name: "Jc Guggilla  Vinay",
@@ -278,7 +314,7 @@ const Team = () => {
           name: "Jc SOMESH  SOMA",
           role: "Zone Coordinator",
           isLead: false,
-          image: "",
+          image: "024.jpg",
         },
         {
           name: "Jc Muchanapalli  Suman kumar",
@@ -297,13 +333,8 @@ const Team = () => {
           MEET THE <span className="text-[#02052A]">TEAM</span>
         </h2>
         <div className="space-y-12">
-          {teams.map((team, index) => (
-            <TeamRow
-              key={index}
-              teamName={team.name}
-              members={team.members}
-              isReverse={index % 2 === 1}
-            />
+          {teams.map((team, idx) => (
+            <TeamRow key={idx} teamName={team.name} members={team.members} />
           ))}
         </div>
       </div>
