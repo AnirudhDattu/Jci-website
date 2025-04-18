@@ -284,7 +284,7 @@ const Team = () => {
           name: "Jc SRIKANTH  THELUKUNTA",
           role: "Zone Coordinator",
           isLead: false,
-          image: "",
+          image: "025.jpg",
         },
         {
           name: "JC PDM CHAITANYA KUMAR  VANKAYALA",

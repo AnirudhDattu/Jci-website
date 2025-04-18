@@ -1,6 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
+import { motion } from "framer-motion";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -47,7 +48,14 @@ const Main4 = () => {
               >
                 {opportunities.map((item) => (
                   <SwiperSlide key={item.id}>
-                    <div className="relative h-64 overflow-hidden">
+                    <motion.div
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.7, ease: "easeOut" }}
+                      whileHover={{ scale: 1.03 }}
+                      className="relative h-64 overflow-hidden"
+                    >
                       <img
                         src={item.image}
                         alt={item.title}
@@ -58,7 +66,7 @@ const Main4 = () => {
                           {item.title}
                         </h3>
                       </div>
-                    </div>
+                    </motion.div>
                   </SwiperSlide>
                 ))}
               </Swiper>
@@ -68,7 +76,15 @@ const Main4 = () => {
             <div className="hidden md:grid gap-6">
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
                 {opportunities.map((item) => (
-                  <div key={item.id} className="relative h-64 overflow-hidden">
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    whileHover={{ scale: 1.03 }}
+                    className="relative h-64 overflow-hidden"
+                  >
                     <img
                       src={item.image}
                       alt={item.title}
@@ -79,7 +95,7 @@ const Main4 = () => {
                         {item.title}
                       </h3>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>

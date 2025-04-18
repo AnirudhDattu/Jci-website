@@ -68,13 +68,13 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  {/* <Link
-                    to="/gallery"
+                  <Link
+                    to="/events"
                     onClick={scrollToTop}
                     className="text-gray-700 hover:text-gray-900 transition-colors text-left w-full"
                   >
-                    Gallery
-                  </Link> */}
+                    Events
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -86,8 +86,24 @@ const Footer = () => {
                 <li className="text-gray-700">
                   D V S P Gupta - zone president
                 </li>
-                <li className="text-gray-700">+91 9347368514</li>
-                <li className="text-gray-700">zsjaczone12@gmail.com</li>
+                <li>
+                  <a
+                    href="tel:+919347368514"
+                    className="text-blue-700 hover:underline cursor-pointer"
+                  >
+                    +91 9347368514
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://mail.google.com/mail/?view=cm&to=zsjaczone12@gmail.com&su=Hi%20i%20want%20to%20talk%20to%20you%20regarding%20something"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-700 hover:underline cursor-pointer"
+                  >
+                    zsjaczone12@gmail.com
+                  </a>
+                </li>
               </ul>
             </nav>
           </div>
@@ -164,6 +180,10 @@ const Footer = () => {
               </a>
             </div>
           </nav>
+        </div>
+        <div className="mt-8 text-center text-gray-400 text-sm">
+          &copy; {new Date().getFullYear()} Designed and Crafted by Anirudh
+          Dattu. All rights reserved by Anirudh Dattu.
         </div>
       </footer>
     </div>

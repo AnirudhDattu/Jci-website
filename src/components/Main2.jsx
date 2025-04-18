@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Main2 = () => {
   return (
@@ -8,12 +9,24 @@ const Main2 = () => {
     >
       <div className="max-w-5xl text-center">
         {/* Heading */}
-        <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-black font-[play] mb-10">
+        <motion.h1
+          className="text-xl md:text-2xl lg:text-3xl font-bold text-black font-[play] mb-10"
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.8 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
           About JAC (JCI Alumni Club) - An Initiative from JCI India
-        </h1>
+        </motion.h1>
 
         {/* Content */}
-        <p className="text-base md:text-lg text-black text-justify tracking-wide leading-7 font-[coda]">
+        <motion.p
+          className="text-base md:text-lg text-black text-justify tracking-wide leading-7 font-[coda]"
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.8 }}
+          transition={{ delay: 0.2, duration: 1.2, ease: "easeOut" }}
+        >
           The JCI Alumni Club (JAC) of JCI India is a vibrant community of
           graduates committed to creating positive change locally and beyond. As
           the supporting organization for JCI, JAC plays a key role in making
@@ -32,7 +45,7 @@ const Main2 = () => {
           reminisce, forge new connections, and build lasting friendships.
           Become part of a community committed to making a meaningful impact and
           supporting each other’s growth. Join us in making a difference.
-        </p>
+        </motion.p>
       </div>
     </div>
   );

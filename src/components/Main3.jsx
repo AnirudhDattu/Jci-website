@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 // import { Link } from "react-router-dom";
 import img from "../assets/img2.png";
 
@@ -47,9 +48,17 @@ const Main3 = () => {
             </div>
 
             {/* Centered Know More Button */}
-            <div className="flex justify-center">
-              <div
-                to="/know-more"
+            <motion.div
+              className="flex justify-center"
+              initial={{ opacity: 0, y: 80 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.5 }}
+              transition={{ delay: 0.3, duration: 1.2, ease: "easeOut" }}
+            >
+              <a
+                href="https://jac.jciindia.in/jci-alumini-club/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative transition-all duration-300 hover:scale-105"
               >
                 <div className="flex items-center justify-between px-8 py-3 bg-yellow-400 hover:bg-yellow-500 transition-colors duration-300">
@@ -74,8 +83,8 @@ const Main3 = () => {
                     </svg>
                   </div>
                 </div>
-              </div>
-            </div>
+              </a>
+            </motion.div>
           </div>
         </div>
       </div>

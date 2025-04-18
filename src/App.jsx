@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Images from "./pages/Images";
 import TeamPage from "./pages/teampage";
 import Eventpage from "./pages/eventpage";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/gallery" element={<Images />} />
         <Route path="/team" element={<TeamPage />} />
         <Route path="/events" element={<Eventpage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
