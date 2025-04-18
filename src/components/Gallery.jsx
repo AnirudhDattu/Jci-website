@@ -15,13 +15,16 @@ const folderMapping = {
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState("All categories");
   const [images, setImages] = useState([]);
-  const [visibleCount, setVisibleCount] = useState(12);
+  const [fetchError, setFetchError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchImages = async () => {
+      setLoading(true);
       try {
-        // Load images from a JSON file or API
+        setFetchError(false);
         const response = await fetch("/gallery/images.json");
+        if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
 
         if (selectedCategory === "All categories") {
@@ -32,18 +35,15 @@ export default function Gallery() {
               ?.images || [];
           setImages(categoryImages);
         }
-        setVisibleCount(12); // Reset visibleCount on category change
       } catch (error) {
-        console.error("Error fetching images:", error);
+        setFetchError(true);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchImages();
   }, [selectedCategory]);
-
-  const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + 12);
-  };
 
   return (
     <div className="bg-[#F8F5F0] pt-20">
@@ -57,7 +57,7 @@ export default function Gallery() {
         </div>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
           {categories.map((category) => (
             <button
               key={category}
@@ -67,78 +67,77 @@ export default function Gallery() {
                   : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
               } font-medium hover:shadow-md`}
               onClick={() => setSelectedCategory(category)}
+              disabled={loading}
             >
               {category}
             </button>
           ))}
         </div>
 
-        {/* Mobile Carousel */}
-        <div className="md:hidden mb-8">
-          <Swiper
-            modules={[Autoplay, Pagination]}
-            spaceBetween={16}
-            slidesPerView={1.2}
-            centeredSlides
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 3000 }}
-          >
-            {images.slice(0, visibleCount).map((src, index) => (
-              <SwiperSlide key={index}>
-                <div className="relative overflow-hidden rounded-xl shadow-lg h-64">
-                  <img
-                    className="w-full h-full object-cover"
-                    src={src}
-                    alt={`Gallery ${index + 1}`}
-                    loading="lazy"
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        {/* Loader */}
+        {loading && (
+          <div className="flex justify-center items-center py-8">
+            <span className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-purple-600"></span>
+            <span className="ml-2 text-purple-700 font-medium">Loading images...</span>
+          </div>
+        )}
+
+        {/* Error Message */}
+        {fetchError && !loading && (
+          <div className="flex flex-col items-center py-8">
+            <div className="text-red-600 font-semibold mb-2">Failed to load images.</div>
+            <button
+              onClick={() => window.location.reload()}
+              className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition"
+            >
+              Retry
+            </button>
+          </div>
+        )}
+
+        {/* Mobile Gallery: Vertical Stack */}
+        <div className="md:hidden mb-8 flex flex-col">
+          {!loading && !fetchError && images.length === 0 && (
+            <div className="text-center text-gray-400 py-8">No images for this category.</div>
+          )}
+          {!loading && !fetchError && images.map((src, index) => (
+            <div key={index} className="overflow-hidden rounded-xl shadow-lg mb-4 border-2 border-purple-400 bg-white">
+              <img
+                className="w-full object-cover"
+                src={src}
+                alt={`Gallery ${index + 1}`}
+                loading="lazy"
+                onError={e => { e.target.style.opacity = 0.5; e.target.src = '/gallery/placeholder.jpg'; }}
+              />
+            </div>
+          ))}
         </div>
 
         {/* Desktop Grid */}
         <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {images.slice(0, visibleCount).map((src, index) => (
+          {!loading && !fetchError && images.length === 0 && (
+            <div className="col-span-full text-center text-gray-400 py-8">No images for this category.</div>
+          )}
+          {!loading && !fetchError && images.map((src, index) => (
             <div
               key={index}
               className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <img
-                className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                 src={src}
                 alt={`Gallery ${index + 1}`}
                 loading="lazy"
+                onError={e => { e.target.style.opacity = 0.5; e.target.src = '/gallery/placeholder.jpg'; }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <p className="font-medium">Event Photo</p>
-                  <p className="text-sm opacity-90">#{index + 1}</p>
+                  {/* Optionally add captions here */}
                 </div>
               </div>
             </div>
           ))}
         </div>
-
-        {/* Load More Button */}
-        {visibleCount < images.length && (
-          <div className="flex justify-center mt-8">
-            <button
-              onClick={handleLoadMore}
-              className="px-6 py-3 rounded-full bg-purple-600 text-white font-semibold shadow-md hover:bg-purple-700 transition-all duration-300"
-            >
-              Load More
-            </button>
-          </div>
-        )}
-
-        {/* Empty State */}
-        {images.length === 0 && (
-          <div className="text-center py-12 text-gray-500">
-            No photos found in this category
-          </div>
-        )}
       </section>
     </div>
   );

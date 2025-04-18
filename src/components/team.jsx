@@ -284,7 +284,7 @@ const Team = () => {
           name: "Jc SRIKANTH  THELUKUNTA",
           role: "Zone Coordinator",
           isLead: false,
-          image: "025.jpg",
+          image: "",
         },
         {
           name: "JC PDM CHAITANYA KUMAR  VANKAYALA",
@@ -334,7 +334,11 @@ const Team = () => {
         </h2>
         <div className="space-y-12">
           {teams.map((team, idx) => (
-            <TeamRow key={idx} teamName={team.name} members={team.members} />
+            <TeamRow
+              key={idx}
+              teamName={team.name}
+              members={team.members}
+            />
           ))}
         </div>
       </div>
