@@ -13,7 +13,7 @@ const Main2 = () => {
           className="text-xl md:text-2xl lg:text-3xl font-bold text-black font-[play] mb-10"
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.8 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           About JAC (JCI Alumni Club) - An Initiative from JCI India
