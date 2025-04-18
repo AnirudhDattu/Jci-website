@@ -201,13 +201,13 @@ const Navbar = () => {
           <Link to="/" className="hover:text-[#EFBF2C]">
             Home
           </Link>
-          <Link
-            to="/"
+          {/* <Link
+            
             onClick={() => scrollToSection("about")}
             className="hover:text-[#EFBF2C]"
           >
             About Us
-          </Link>
+          </Link> */}
 
           <Link to="/team" className="hover:text-[#EFBF2C]">
             Team
