@@ -84,7 +84,7 @@ const Footer = () => {
               <h6 className="text-lg font-bold mb-4 text-gray-800">Contact</h6>
               <ul className="space-y-2">
                 <li className="text-gray-700">
-                  D V S P Gupta - zone president
+                JCI SEN PDM D.V.S.P.GUPTA - Zone Chairman
                 </li>
                 <li>
                   <a
@@ -95,8 +95,9 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://mail.google.com/mail/?view=cm&to=zsjaczone12@gmail.com&su=Hi%20i%20want%20to%20talk%20to%20you%20regarding%20something"
+                  <a 
+                    href="https://mail.google.com/mail/?view=cm&to=zsjaczone12@gmail.com&su=Hi%20i%20want%20to%20know%20more%20about%20your%20organization"
+
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-700 hover:underline cursor-pointer"

@@ -1,314 +1,191 @@
 import React from "react";
-import { motion } from "framer-motion";
+import logo from "../assets/mainlogo.png";
+import { Link, useNavigate } from "react-router-dom";
 
-const TeamMember = ({ name, role, isLead, image }) => (
-  <motion.div
-    className={`relative group min-w-[150px] sm:min-w-[240px] mx-2 ${
-      isLead ? "order-first" : ""
-    }`}
-    whileHover={{ scale: 1 }}
-    transition={{ duration: 2 }}
-  >
-    <div className="overflow-hidden rounded-lg">
-      <img
-        src={`/Team/${image}`}
-        alt={name}
-        className="w-full h-[172px] sm:h-[250px] md:h-[300px] bg-gray-200 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
-        onError={(e) => {
-          e.target.src = "/team/default-avatar.jpg";
-        }}
-      />
-      <div className="p-3 sm:p-4 ps-0">
-        <h3 className="text-black font-bold text-lg sm:text-lg md:text-xl">
-          {name}
-        </h3>
-        <p
-          className={`uppercase text-sm sm:text-sm md:text-base tracking-wider ${
-            isLead ? "text-[#02052A]" : "text-gray-600"
-          }`}
-        >
-          {role}
-        </p>
-      </div>
-    </div>
-  </motion.div>
-);
+const Footer = () => {
+  const navigate = useNavigate();
 
-const TeamRow = ({ teamName, members, isReverse }) => {
-  const sortedMembers = [...members].sort((a, b) => {
-    if (a.isLead) return 1;
-    if (b.isLead) return 1;
-    return 0;
-  });
+  const handleNavigation = (sectionId) => {
+    if (window.location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: sectionId } });
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }
+  };
+
+  const scrollToTop = () => {
+    if (window.location.pathname !== "/") {
+      navigate("/");
+    }
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
-    <div className="mb-12 mt-8">
-      <h3 className="text-2xl md:text-3xl font-bold text-black mb-6 px-2">
-        {teamName}
-      </h3>
-      <div className="relative overflow-hidden">
-        <motion.div
-          className="flex"
-          animate={{
-            x: isReverse ? [0, -240] : [-240, 0],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 10,
-            ease: "linear",
-          }}
+    <div className="relative bg-[#F8F5F0]">
+      {/* Yellow Footer Section */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div
+          className="bg-yellow-400 p-6 sm:p-8 md:p-10 rounded-lg shadow-lg"
+          style={{ marginBottom: "-2rem" }}
         >
-          <div className="flex">
-            {sortedMembers.map((member, index) => (
-              <TeamMember
-                key={`${index}-original`}
-                name={member.name}
-                role={member.role}
-                isLead={member.isLead}
-                image={member.image}
-              />
-            ))}
-          </div>
-          <div className="flex">
-            {sortedMembers.map((member, index) => (
-              <TeamMember
-                key={`${index}-duplicate`}
-                name={member.name}
-                role={member.role}
-                isLead={member.isLead}
-                image={member.image}
-              />
-            ))}
-          </div>
-        </motion.div>
-      </div>
-    </div>
-  );
-};
+          <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-12">
+            {/* Navigation Section */}
+            <nav className="flex-1">
+              <h6 className="text-lg font-bold mb-4 text-gray-800">Navigate</h6>
+              <ul className="space-y-2">
+                <li>
+                  <button
+                    onClick={() => handleNavigation("about")}
+                    className="text-gray-700 hover:text-gray-900 transition-colors text-left w-full"
+                  >
+                    About Us
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => handleNavigation("opportunities")}
+                    className="text-gray-700 hover:text-gray-900 transition-colors text-left w-full"
+                  >
+                    Areas of Opportunity
+                  </button>
+                </li>
+                <li>
+                  <Link
+                    to="/team"
+                    onClick={scrollToTop}
+                    className="text-gray-700 hover:text-gray-900 transition-colors text-left w-full"
+                  >
+                    Team
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/events"
+                    onClick={scrollToTop}
+                    className="text-gray-700 hover:text-gray-900 transition-colors text-left w-full"
+                  >
+                    Events
+                  </Link>
+                </li>
+              </ul>
+            </nav>
 
-const Team = () => {
-  const teams = [
-    {
-      name: "Core",
-      members: [
-        {
-          name: "JCI SEN PDM D V S P  GUPTA",
-          role: "Zone Chairman",
-          isLead: true,
-          image: "001.jpg",
-        },
-        {
-          name: "JCI SEN PDM GVN RAJU ",
-          role: "I P Z C",
-          isLead: false,
-          image: "005.jpg",
-        },
-        {
-          name: "Jc Naveen kumar  chavalla",
-          role: "Zone Vice Chairman - A",
-          isLead: false,
-          image: "009.jpg",
-        },
-        {
-          name: "JCI SEN PPP Srinivas  Veerabomma",
-          role: "Zone Vice Chairman - B",
-          isLead: false,
-          image: "014.jpg",
-        },
-        {
-          name: "Jc Surender Reddy  Gade",
-          role: "Zone Vice Chairman - C",
-          isLead: false,
-          image: "017.jpg",
-        },
-        {
-          name: "JCI SEN  Vijayanand  Jilkaar",
-          role: "Zone Vice Chairman -D",
-          isLead: false,
-          image: "007.jpg",
-        },
-        {
-          name: "JCI SEN Mahesh  Golechha",
-          role: "Zone Vice Chairman - E",
-          isLead: false,
-          image: "002.jpg",
-        },
-        {
-          name: "Jc Kamalakar  Musthyala",
-          role: "Zone Parlamentarian",
-          isLead: false,
-          image: "008.jpg",
-        },
-        {
-          name: "Jc Kathuri  Srinivas",
-          role: "Zone Secreatary",
-          isLead: false,
-          image: "006.jpg",
-        },
-        {
-          name: "JC PDM Shyam sunder  Madugala",
-          role: "Zone Treasurer",
-          isLead: false,
-          image: "004.jpg",
-        },
-        {
-          name: "Jc Vishakha  Mashankar",
-          role: "Zone Foundation Officer",
-          isLead: false,
-          image: "013.jpg",
-        },
-      ],
-    },
-    {
-      name: "",
-      members: [
-        {
-          name: "Jc ZAHABIA  KANCHANVALA",
-          role: "Zone P R Person & Editor",
-          isLead: true,
-          image: "",
-        },
-        {
-          name: "Jc Radha Krishna Sathelli ",
-          role: "Zone Director",
-          isLead: false,
-          image: "020.jpg",
-        },
-        {
-          name: "Jc Kartik  Gumidelli",
-          role: "Zone Director",
-          isLead: false,
-          image: "003.jpg",
-        },
-        {
-          name: "Jc NITI  KADAKIA",
-          role: "Zone Director",
-          isLead: false,
-          image: "018.jpg",
-        },
-        {
-          name: "Jc CHANDRA SEKHAR NALLAMOTHU  ",
-          role: "Zone Director",
-          isLead: false,
-          image: "012.jpg",
-        },
-        {
-          name: "Jc DEEPKANTH SOMA",
-          role: "Zone Director",
-          isLead: false,
-          image: "",
-        },
-      ],
-    },
-    {
-      name: "",
-      members: [
-        {
-          name: "Jc VIDHI GUPTA  ",
-          role: "Regional Chairman",
-          isLead: true,
-          image: "022.jpg",
-        },
-        {
-          name: "Jc BHASKAR REDDY  VENATI",
-          role: "Regional Chairman",
-          isLead: false,
-          image: "",
-        },
-        {
-          name: "Jc Sandeep  Jain",
-          role: "Regional Chairman",
-          isLead: false,
-          image: "",
-        },
-        {
-          name: "Jc Viikash Jain",
-          role: "Regional Chairman",
-          isLead: false,
-          image: "010.jpg",
-        },
-        {
-          name: "Jc SUNEEL BABU  PENUMAKA  ",
-          role: "Regional Chairman",
-          isLead: false,
-          image: "015.jpg",
-        },
-      ],
-    },
-    {
-      name: "",
-      members: [
-        {
-          name: "Jc Chandra Sekhar",
-          role: "Zone Coordinator",
-          isLead: false,
-          image: "023.jpg",
-        },
-        {
-          name: "Jc SRIKANTH  THELUKUNTA",
-          role: "Zone Coordinator",
-          isLead: false,
-          image: "",
-        },
-        {
-          name: "JC PDM CHAITANYA KUMAR  VANKAYALA",
-          role: "Zone Coordinator",
-          isLead: false,
-          image: "011.jpg",
-        },
-        {
-          name: "Jc Dr Shripuja  SIDDAMSETTY",
-          role: "Zone Coordinator",
-          isLead: false,
-          image: "019.jpg",
-        },
-        {
-          name: "Jc Naveen  Majety",
-          role: "Zone Coordinator",
-          isLead: false,
-          image: "021.jpg",
-        },
-        {
-          name: "Jc Guggilla  Vinay",
-          role: "Zone Coordinator",
-          isLead: false,
-          image: "016.jpg",
-        },
-        {
-          name: "Jc SOMESH  SOMA",
-          role: "Zone Coordinator",
-          isLead: false,
-          image: "024.jpg",
-        },
-        {
-          name: "Jc Muchanapalli  Suman kumar",
-          role: "Zone Coordinator",
-          isLead: false,
-          image: "",
-        },
-      ],
-    },
-  ];
-
-  return (
-    <div className="bg-[#F8F5F0] py-8 md:py-16 px-4 md:px-6 lg:px-8 mt-10">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-black mb-12 text-center">
-          MEET THE <span className="text-[#02052A]">TEAM</span>
-        </h2>
-        <div className="space-y-12">
-          {teams.map((team, index) => (
-            <TeamRow
-              key={index}
-              teamName={team.name}
-              members={team.members}
-              isReverse={index % 2 === 1}
-            />
-          ))}
+            {/* Contact Section */}
+            <nav className="flex-1">
+              <h6 className="text-lg font-bold mb-4 text-gray-800">Contact</h6>
+              <ul className="space-y-2">
+                <li className="text-gray-700">
+                  JCI SEN PDM D.V.S.P.GUPTA - Zone Chairman
+                </li>
+                <li>
+                  <a
+                    href="tel:+919347368514"
+                    className="text-blue-700 hover:underline cursor-pointer"
+                  >
+                    +91 9347368514
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:zsjaczone12@gmail.com?subject=Hi%20I%20want%20to%20talk%20to%20you%20regarding%20something"
+                    className="text-blue-700 hover:underline cursor-pointer"
+                  >
+                    zsjaczone12@gmail.com
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
+
+      {/* Blue Footer Section */}
+      <footer className="bg-[#02052A] text-white pt-16 pb-8 px-4 sm:px-6 lg:px-8 relative z-0">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Logo */}
+          <button onClick={scrollToTop} className="focus:outline-none">
+            <img
+              src={logo}
+              alt="Logo"
+              className="h-16 w-auto hover:opacity-80 transition-opacity"
+            />
+          </button>
+
+          {/* Social Links */}
+          <nav>
+            <div className="flex gap-6">
+              {/* Twitter */}
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-75 transition-opacity"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  className="fill-current"
+                >
+                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
+                </svg>
+              </a>
+
+              {/* Facebook */}
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-75 transition-opacity"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  className="fill-current"
+                >
+                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
+                </svg>
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-75 transition-opacity"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  className="fill-current"
+                >
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </a>
+            </div>
+          </nav>
+        </div>
+        <div className="mt-8 text-center text-gray-400 text-sm">
+          &copy; {new Date().getFullYear()} Designed and Crafted by Anirudh
+          Dattu. All rights reserved by Anirudh Dattu.
+        </div>
+      </footer>
     </div>
   );
 };
 
-export default Team;
+export default Footer;
