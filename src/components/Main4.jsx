@@ -6,11 +6,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 // Import your images
-import img1 from "../assets/img2.png";
-import img2 from "../assets/img2.png";
-import img3 from "../assets/img2.png";
-import img4 from "../assets/img2.png";
-import img5 from "../assets/img2.png";
+import img1 from "../assets/leader.png";
+import img2 from "../assets/networ.jpg";
+import img3 from "../assets/Community.jpg";
+import img4 from "../assets/skill.jpg";
+import img5 from "../assets/Global.jpg";
 
 const Main4 = () => {
   const opportunities = [
@@ -62,7 +62,7 @@ const Main4 = () => {
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 p-4">
-                        <h3 className="text-white font-semibold text-lg">
+                        <h3 className="text-white font-bold text-lg">
                           {item.title}
                         </h3>
                       </div>
@@ -91,7 +91,7 @@ const Main4 = () => {
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 p-4">
-                      <h3 className="text-white font-semibold text-lg">
+                      <h3 className="text-white font-bold text-lg">
                         {item.title}
                       </h3>
                     </div>
