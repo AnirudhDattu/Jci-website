@@ -327,18 +327,14 @@ const Team = () => {
   ];
 
   return (
-    <div className="bg-[#F8F5F0] py-8 md:py-16 px-4 md:px-6 lg:px-8 mt-10">
+    <div className="bg-[#F8F5F0] py-8 md:py-16 px-4 md:px-6 lg:px-8 lg:mt-10 md:mt-20">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-black mb-12 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-black mb-12 text-center ">
           MEET THE <span className="text-[#02052A]">TEAM</span>
         </h2>
         <div className="space-y-12">
           {teams.map((team, idx) => (
-            <TeamRow
-              key={idx}
-              teamName={team.name}
-              members={team.members}
-            />
+            <TeamRow key={idx} teamName={team.name} members={team.members} />
           ))}
         </div>
       </div>
