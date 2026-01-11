@@ -63,7 +63,7 @@ const EventTimeline = () => {
         image: "/events/mother.jpg",
       },
       {
-        title: "Speaker meet on A I",
+        title: "Speaker meet on AI",
         date: "",
         description: "",
         image: "/events/AI.jpg",
@@ -111,6 +111,211 @@ const EventTimeline = () => {
         date: "",
         description: "",
         image: "/events/ugadi.jpg",
+      },
+    ],
+    April: [
+      {
+        title: "2nd ZB meeting",
+        date: "2nd April 2025",
+        description: "",
+        image: "/events/2zb.jpeg",
+      },
+      {
+        title: "NVC Official visit",
+        date: "20th April 2025",
+        description:
+          "NVC OFFICIAL VISIT TO JAC ZONE 12 - JFS PDM N M S JAI KUMAR",
+        image: "/events/nvcvisit.jpeg",
+      },
+      {
+        title: "Health Visit",
+        date: "20th April 2025",
+        description: "",
+        image: "/events/health.jpeg",
+      },
+      {
+        title: "Mud Bath - 2",
+        date: "20th April 2025",
+        description: "",
+        image: "/events/mudbath.jpeg",
+      },
+      {
+        title: "Summer Camp",
+        date: "20th April 2025",
+        description: "",
+        image: "/events/summercamp.jpeg",
+      },
+      {
+        title: "Website Launch",
+        date: "20th April 2025",
+        description: "",
+        image: "/events/website.jpeg",
+      },
+    ],
+    May: [
+      {
+        title: "Morning Walk",
+        date: "11th May 2025",
+        description: "",
+        image: "/events/morningwalk.jpg",
+      },
+      {
+        title: "Health Camp",
+        date: "21th May 2025",
+        description: "",
+        image: "/events/healthcamp.jpg",
+      },
+      {
+        title: "NB Meeting at COORG",
+        date: "23 - 25th May 2025",
+        description: "",
+        image: "/events/nbmeet.jpg",
+      },
+      {
+        title: "JAC Business Conclave",
+        date: "30th May 2025",
+        description: "",
+        image: "/events/businessconclave.jpg",
+      },
+    ],
+    June: [
+      {
+        title: "3rd ZB meeting",
+        date: "18th June 2025",
+        description: "",
+        image: "/events/3zb.jpg",
+      },
+      {
+        title: "JCI ZONE - 12 MIDCON",
+        date: "22th June 2025",
+        description: "",
+        image: "/events/midcon.jpg",
+      },
+      {
+        title: "Pedal To Progress",
+        date: "29th June 2025",
+        description: "",
+        image: "/events/pedal.jpg",
+      },
+      {
+        title: "Parivarthan NZB",
+        date: "30th June 2025",
+        description: "",
+        image: "/events/parivarthan.jpg",
+      },
+    ],
+    July: [
+      {
+        title: "South Carnval 2025",
+        date: "5 - 6 th July 2025",
+        description: "",
+        image: "/events/12.jpg",
+      },
+      {
+        title: "NP Multi LO Meet",
+        date: "9th July 2025",
+        description: "",
+        image: "/events/NP multi.jpg",
+      },
+      {
+        title: "NC Recival",
+        date: "25th July 2025",
+        description: "",
+        image: "/events/NCrec.jpg",
+      },
+      {
+        title: "Visit To Swarnagiri Temple",
+        date: "26th July 2025",
+        description: "",
+        image: "/events/temple.jpg",
+      },
+      {
+        title: "Amma Nanna Ashram - Permenent Project",
+        date: "26th July 2025",
+        description: "",
+        image: "/events/amma.jpg",
+      },
+      {
+        title: "Coffie With NC",
+        date: "26th July 2025",
+        description: "",
+        image: "/events/cof.jpg",
+      },
+      {
+        title: "MIDCON & Graduation",
+        date: "26th July 2025",
+        description: "",
+        image: "/events/midcon2.jpg",
+      },
+    ],
+    August: [
+      {
+        title: "Independence Day Celebrations",
+        date: "15th August 2025",
+        description: "",
+        image: "/events/indep.JPG",
+      },
+      {
+        title: "North Carnival 2025",
+        date: "23th August 2025",
+        description: "",
+        image: "/events/northcar.jpg",
+      },
+      {
+        title: "4th ZB meeting",
+        date: "29th August 2025",
+        description: "",
+        image: "/events/4ZB.jpg",
+      },
+    ],
+    September: [
+      {
+        title: "Teacher's Day Celebrations",
+        date: "5th September 2025",
+        description: "",
+        image: "/events/teachersday.JPG",
+      },
+      {
+        title: "School of Politics",
+        date: "6 - 8th September 2025",
+        description: "",
+        image: "/events/politics.jpg",
+      },
+      {
+        title: "M Square M Cubed",
+        date: "14th September 2025",
+        description: "",
+        image: "/events/M2.jpg",
+      },
+    ],
+    October: [
+      {
+        title: "NZB meeting",
+        date: "11th October 2025",
+        description: "",
+        image: "/events/NZB2.jpg",
+      },
+    ],
+    November: [
+      {
+        title: "JCI ZONECON",
+        date: "2st November 2025",
+        description: "",
+        image: "/events/jciconecon.jpg",
+      },
+      {
+        title: "5th ZB meeting",
+        date: "6th November 2025",
+        description: "",
+        image: "/events/5zb.jpg",
+      },
+    ],
+    December: [
+      {
+        title: "Cricket Tournament",
+        date: "14th December 2025",
+        description: "",
+        image: "/events/cricket.jpg",
       },
     ],
   };
