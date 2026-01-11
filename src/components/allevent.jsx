@@ -83,7 +83,7 @@ const EventTimeline = () => {
         image: "/events/holi.jpg",
       },
       {
-        title: "Z Art",
+        title: "Z ART",
         date: "",
         description: "",
         image: "/events/zart.jpg",
@@ -128,7 +128,7 @@ const EventTimeline = () => {
         image: "/events/nvcvisit.jpeg",
       },
       {
-        title: "Health Visit",
+        title: "Health Talk",
         date: "20th April 2025",
         description: "",
         image: "/events/health.jpeg",
@@ -166,8 +166,8 @@ const EventTimeline = () => {
         image: "/events/healthcamp.jpg",
       },
       {
-        title: "NB Meeting at COORG",
-        date: "23 - 25th May 2025",
+        title: "National Board Meeting at COORG",
+        date: "2th May 2025",
         description: "",
         image: "/events/nbmeet.jpg",
       },
@@ -198,7 +198,7 @@ const EventTimeline = () => {
         image: "/events/pedal.jpg",
       },
       {
-        title: "Parivarthan NZB",
+        title: "PARIVARTHAN NZB",
         date: "30th June 2025",
         description: "",
         image: "/events/parivarthan.jpg",
@@ -212,25 +212,25 @@ const EventTimeline = () => {
         image: "/events/12.jpg",
       },
       {
-        title: "NP Multi LO Meet",
+        title: "NP visit MULTI LO MEET",
         date: "9th July 2025",
         description: "",
         image: "/events/NP multi.jpg",
       },
       {
-        title: "NC Recival",
+        title: "NC ARRIVAL on Official Visit",
         date: "25th July 2025",
         description: "",
         image: "/events/NCrec.jpg",
       },
       {
-        title: "Visit To Swarnagiri Temple",
+        title: "Devotional Trip to Swarnagiri Temple",
         date: "26th July 2025",
         description: "",
         image: "/events/temple.jpg",
       },
       {
-        title: "Amma Nanna Ashram - Permenent Project",
+        title: "Amma Nanna Anatha Ashramam - Permenent Project",
         date: "26th July 2025",
         description: "",
         image: "/events/amma.jpg",
@@ -282,7 +282,7 @@ const EventTimeline = () => {
         image: "/events/politics.jpg",
       },
       {
-        title: "M Square M Cubed",
+        title: "M square or M Cube",
         date: "14th September 2025",
         description: "",
         image: "/events/M2.jpg",
@@ -290,7 +290,7 @@ const EventTimeline = () => {
     ],
     October: [
       {
-        title: "NZB meeting",
+        title: "Special triaging in Nizamabad",
         date: "11th October 2025",
         description: "",
         image: "/events/NZB2.jpg",
@@ -312,7 +312,7 @@ const EventTimeline = () => {
     ],
     December: [
       {
-        title: "Cricket Tournament",
+        title: "BOX CRICKET Tournament",
         date: "14th December 2025",
         description: "",
         image: "/events/cricket.jpg",

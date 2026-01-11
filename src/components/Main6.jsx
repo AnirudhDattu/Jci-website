@@ -27,7 +27,7 @@ const Main6 = () => {
       title: "NVC Official Visit",
       location: "Secundrabad",
       time: "10:30 AM",
-      status: "Today",
+      status: "Completed",
     },
     {
       image: event3,
@@ -36,7 +36,7 @@ const Main6 = () => {
       title: "Busuness Conclave",
       location: "grater Nodia",
       time: "10:00 AM",
-      status: "Upcoming",
+      status: "Completed",
     },
   ];
 
